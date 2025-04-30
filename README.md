@@ -1,0 +1,1 @@
+This is a school project where we start by exploring the idea of an personal finance tracker
