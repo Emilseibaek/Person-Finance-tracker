@@ -11,10 +11,11 @@ from forms import LoginForm, RegistrationForm, TransactionForm, CategoryForm
 # Load environment variables
 load_dotenv()
 
+
 # Create Flask app
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'dev')
-app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL', 'sqlite:///finance_tracker.db')
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # Initialize extensions
@@ -116,6 +117,9 @@ def transactions():
     month = request.args.get('month', type=int, default=datetime.now().month)
     year = request.args.get('year', type=int, default=datetime.now().year)
     
+    # Calculate current year for the template range
+    current_year_for_range = datetime.now().year
+
     # Build query
     query = Transaction.query.filter_by(user_id=current_user.id)
     if month and year:
@@ -130,7 +134,8 @@ def transactions():
                          title='Transactions',
                          transactions=transactions,
                          current_month=month,
-                         current_year=year)
+                         current_year=year,
+                         current_year_for_range=current_year_for_range)
 
 @app.route('/transactions/new', methods=['GET', 'POST'])
 @login_required

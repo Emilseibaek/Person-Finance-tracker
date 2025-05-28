@@ -24,7 +24,7 @@
             <div class="col-md-4">
                 <label for="year" class="form-label">Year</label>
                 <select name="year" id="year" class="form-select">
-                    {% for y in range(2020, datetime.now().year + 1) %}
+                    {% for y in range(2020, current_year_for_range + 1) %}
                     <option value="{{ y }}" {% if y == current_year %}selected{% endif %}>{{ y }}</option>
                     {% endfor %}
                 </select>
