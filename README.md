@@ -2,21 +2,33 @@
 
 A simple web application for tracking personal finances, built with Flask and SQLAlchemy and the use of Jinja2 HTML templates.
 
+## Assignment Requirements:
+
+Based on the project's implementation, the following assignment requirements are addressed:
+
+*   **Database Interaction:** The application extensively interacts with the PostgreSQL database using SQLAlchemy ORM, performing INSERT, UPDATE, DELETE, and SELECT operations for managing users, categories, and transactions.
+
+*   **Text Processing:** The project utilizes the `email-validator` library, which internally employs regular expression matching for validation of user email addresses during registration.
+
 ## Features
 
-- User authentication (register, login, logout)
+- User authentication such as register, login, logout.
 - Track income and expenses
 - Categorize transactions
-- Simple dashboard with financial summaries
 - Monthly category totals
+
+## Shortcommings
+- Simple dashboard with financial summaries doesnt work
 
 ## Tech Stack
 
-- Python 3.11
-- Flask 2.x
-- SQLAlchemy ORM
+- Python
+- Flask
+- SQLAlchemy 
 - PostgreSQL
-- Bootstrap 5 (CDN)
+- Bootstrap 5
+
+
 
 ## Setup Guide (Local PostgreSQL)
 
