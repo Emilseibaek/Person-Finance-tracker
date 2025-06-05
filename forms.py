@@ -3,6 +3,7 @@ from wtforms import StringField, PasswordField, BooleanField, SubmitField, Decim
 from wtforms.validators import DataRequired, Email, EqualTo, Length, ValidationError, NumberRange, Optional
 from datetime import date
 from models import User, Category
+import re
 
 class LoginForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
@@ -52,6 +53,16 @@ class TransactionForm(FlaskForm):
     date = DateField('Date', validators=[DataRequired()], default=date.today)
     description = TextAreaField('Description', validators=[Optional()])
     submit = SubmitField('Save Transaction')
+    
+    description = TextAreaField('Description', validators=[Optional()])
+    submit = SubmitField('Save Transaction')
+
+    def validate_description(self, field):
+        # Only allow alphanumeric, spaces, and hashtags (as an example)
+        if field.data:
+            pattern = r'^[\w\s#-]*$'
+            if not re.match(pattern, field.data):
+                raise ValidationError('Description can only contain letters, numbers, spaces, #, and -')
 
 class CategoryForm(FlaskForm):
     name = StringField('Name', validators=[
