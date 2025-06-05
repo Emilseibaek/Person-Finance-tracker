@@ -8,7 +8,7 @@ Based on the project's implementation, the following assignment requirements are
 
 *   **Database Interaction:** The application extensively interacts with the PostgreSQL database using SQLAlchemy ORM, performing INSERT, UPDATE, DELETE, and SELECT operations for managing users, categories, and transactions.
 
-*   **Text Processing:** The project utilizes the `email-validator` library, which internally employs regular expression matching for validation of user email addresses during registration.
+*   **Text Processing:** The project uses a custom regular expression in the `validate_description` method of the transaction form to ensure that transaction descriptions only contain letters, numbers, spaces, `#` and `-`.
 
 ## Features
 
